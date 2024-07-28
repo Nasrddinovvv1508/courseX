@@ -2,12 +2,12 @@
 import { Outlet } from 'react-router-dom'
 
 // components
-import { Navbar } from '../components'
+import { MegaMenuDefault } from '../components'
 
 function MainLayout() {
     return (
         <>
-            <Navbar />
+            <MegaMenuDefault />
             <main>
                 <Outlet />
             </main>
