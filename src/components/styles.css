@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+    height: 360px;
+    justify-content: center;
+    width: 360px;
+}
+
+.email {
+    background: #DEDBDF;
+    border-radius: 50%;
+    /* Make it rounded */
+    height: 80px;
+    /* Adjust size as needed */
+    width: 80px;
+    /* Adjust size as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    transition: width 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        height 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        box-shadow 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        border-radius 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    cursor: pointer;
+}
+
+.email.expand {
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.10), 0 6px 6px rgba(0, 0, 0, 0.16);
+    height: 200px;
+    width: 300px;
+}
+
+.avatar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-img {
+    width: 100%;
+    /* Adjust size as needed */
+    height: 100%;
+    /* Adjust size as needed */
+}
+
+.bottom {
+    background: #FFF;
+    color: #444247;
+    font-size: 14px;
+    height: 200px;
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.description {
+    text-align: center;
+}
+
+.x-touch {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.x {
+    background: #BA87F9;
+    border-radius: 10px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line1,
+.line2 {
+    background: #6422EB;
+    height: 12px;
+    width: 2px;
+    position: absolute;
+}
+
+.line1 {
+    transform: rotate(45deg);
+}
+
+.line2 {
+    transform: rotate(-45deg);
+}

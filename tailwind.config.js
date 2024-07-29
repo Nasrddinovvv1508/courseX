@@ -9,7 +9,11 @@ module.exports = withMT({
     "path-to-your-node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/public/assets/applications.webp')",
+      },
+    },
   },
   plugins: [require('daisyui'),],
 })

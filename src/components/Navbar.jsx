@@ -1,13 +1,25 @@
+// react
 import React from "react";
+
+// material-tailwind
 import {
   Navbar,
   Collapse,
   Typography,
   IconButton,
 } from "@material-tailwind/react";
+
+// heroicons
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
+// react-router-dom
 import { Link, NavLink } from "react-router-dom";
+
+// redux
 import { useSelector } from "react-redux";
+
+// src\components
+import { Sidebar } from ".";
 
 function NavList() {
   return (
@@ -67,28 +79,34 @@ export default function NavbarSimple() {
   }, []);
 
   return (
-    <header>
+    <header className="sticky top-0 z-50">
       <Navbar className="mx-auto max-w-full px-10 py-3 custom-font">
-        <div className="flex items-center justify-between text-blue-gray-900">
-          <Link to={"/"}>
-            <Typography
-              as="a"
-              variant="h6"
-              className="mr-4 cursor-pointer py-1.5 flex gap-2 items-center custom-font"
-            >
-              <img className="h-6 w-6 rounded-md" src="../assets/logo.jpg" alt="logo" />
-              <p className="flex items-center gap-1 font-bold">
-                <span className="text-[#202a36] text-[25px]">Course</span>
-                <span className="text-[#f89f27] text-3xl -mb-1">X</span>
-              </p>
-            </Typography>
-          </Link>
+
+        <div className="flex items-center justify-between ">
+          <div className="flex items-center select-none">
+            {/* <div>
+              <Sidebar />
+            </div> */}
+            <Link to={"/"}>
+              <Typography
+                as="a"
+                variant="h6"
+                className="mr-4 cursor-pointer py-1.5 flex gap-2 items-center custom-font"
+              >
+                <img className="h-6 w-6 rounded-md" src="../assets/logo.jpg" alt="logo" />
+                <p className="flex items-center gap-1 font-bold">
+                  <span className="text-[#202a36] text-[25px]">Course</span>
+                  <span className="text-[#fa8128] text-3xl -mb-1">X</span>
+                </p>
+              </Typography>
+            </Link>
+          </div>
           <div className="hidden lg:block">
             <NavList />
           </div>
           <IconButton
             variant="text"
-            className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden custom-font"
+            className=" h-6 w-6  lg:hidden custom-font"
             ripple={false}
             onClick={() => setOpenNav(!openNav)}
           >
@@ -106,3 +124,5 @@ export default function NavbarSimple() {
     </header>
   );
 }
+
+//text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent
