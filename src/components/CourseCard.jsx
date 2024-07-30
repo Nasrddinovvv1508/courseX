@@ -9,7 +9,7 @@ import {
 
 export default function CardDefault() {
     return (
-        <Card className="mt-6 w-96">
+        <Card className="mt-6 w-96 hover:shadow-lg hover:shadow-[#f89f27]">
             <CardHeader color="blue-gray" className="relative h-56 overflow-hidden">
                 <div className="relative">
                     <img

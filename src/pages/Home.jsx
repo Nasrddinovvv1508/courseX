@@ -1,7 +1,7 @@
 import { Button } from '@material-tailwind/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { EmailComponent } from '../components'
+import { CourseHeader, EmailComponent, RowCourseCard } from '../components'
 
 function Home() {
   return (
@@ -43,7 +43,7 @@ function Home() {
             <h2 className='text-2xl font-bold mt-[20px] text-left'>
               Highlights:
             </h2>
-            <div className='pt-[20px] flex items-center gap-[40px] overflow-auto'>
+            <div className='pt-[20px] flex items-center gap-[40px] overflow-auto select-none'>
               <EmailComponent
                 title="Case Studies:"
                 description={"Study real-world scenarios and solve problems faced by professionals in the field"}
@@ -71,6 +71,22 @@ function Home() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <h1 className='text-center text-5xl font-bold mb-[30px]'>Our Featured Courses</h1>
+        </div>
+
+        <div className='main-container'>
+          <CourseHeader />
+        </div>
+
+        <div className='w-full flex flex-col justify-center items-center'>
+          <Link to="/all-course">
+            <Button color="amber">View All</Button>
+          </Link>
         </div>
       </section>
     </div>

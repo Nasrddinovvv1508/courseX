@@ -4,7 +4,7 @@ import { CourseCard } from '../components'
 function AllCourses() {
   return (
     <div>
-      <section className='main-container flex flex-wrap gap-[24px] mt-[70px]'>
+      <section className='main-container flex flex-wrap gap-[24px] my-[70px]'>
         <Link to={`/single-course`}>
           <CourseCard />
         </Link>

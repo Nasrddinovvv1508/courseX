@@ -13,9 +13,10 @@ function MainLayout() {
 
                 Mood
             </div>
-            <main>
+            <main className='mb-[100px]'>
                 <Outlet />
             </main>
+
             <Footer />
         </>
     )

@@ -19,7 +19,6 @@ import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 // src\components
-import { Sidebar } from ".";
 
 function NavList() {
   return (
@@ -63,8 +62,6 @@ function NavList() {
 export default function NavbarSimple() {
   let { user } = useSelector((state) => state.user)
 
-  console.log(user);
-
   const [openNav, setOpenNav] = React.useState(false);
 
   const handleWindowResize = () =>
@@ -84,9 +81,6 @@ export default function NavbarSimple() {
 
         <div className="flex items-center justify-between ">
           <div className="flex items-center select-none">
-            {/* <div>
-              <Sidebar />
-            </div> */}
             <Link to={"/"}>
               <Typography
                 as="a"

@@ -1,6 +1,6 @@
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { IconButton } from '@material-tailwind/react'
-import React from 'react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { IconButton } from '@material-tailwind/react';
+import React from 'react';
 
 function OpenSidebar({ openDrawer, isDrawerOpen }) {
     return (
@@ -11,7 +11,7 @@ function OpenSidebar({ openDrawer, isDrawerOpen }) {
                 <Bars3Icon className="h-8 w-8 stroke-2" />
             )}
         </IconButton>
-    )
+    );
 }
 
-export default OpenSidebar
+export default OpenSidebar;

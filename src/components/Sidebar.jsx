@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     IconButton,
     Typography,
@@ -32,6 +32,7 @@ import {
     XMarkIcon,
 } from "@heroicons/react/24/outline";
 import OpenSidebar from "./OpenSidebar";
+import { Link } from "react-router-dom";
 
 export default function SidebarWithBurgerMenu() {
     const [open, setOpen] = React.useState(0);
@@ -45,6 +46,14 @@ export default function SidebarWithBurgerMenu() {
     const openDrawer = () => setIsDrawerOpen(true);
     const closeDrawer = () => setIsDrawerOpen(false);
 
+    // useEffect to handle body overflow when drawer is open
+    useEffect(() => {
+        document.body.style.overflow = isDrawerOpen ? "hidden" : "auto";
+        return () => {
+            document.body.style.overflow = "auto"; // Cleanup overflow style on unmount
+        };
+    }, [isDrawerOpen]);
+
     return (
         <>
             <OpenSidebar openDrawer={openDrawer} isDrawerOpen={isDrawerOpen} />
@@ -56,14 +65,19 @@ export default function SidebarWithBurgerMenu() {
                     className="h-[calc(100vh-2rem)] w-full p-4"
                 >
                     <div className="mb-2 flex items-center gap-4 p-4">
-                        <img
-                            src="https://docs.material-tailwind.com/img/logo-ct-dark.png"
-                            alt="brand"
-                            className="h-8 w-8"
-                        />
-                        <Typography variant="h5" color="blue-gray">
-                            Sidebar
-                        </Typography>
+                        <Link to={"/"}>
+                            <Typography
+                                as="a"
+                                variant="h6"
+                                className="mr-4 cursor-pointer py-1.5 flex gap-2 items-center custom-font"
+                            >
+                                <img className="h-6 w-6 rounded-md select-none" src="../assets/logo.jpg" alt="logo" />
+                                <p className="flex items-center gap-1 font-bold">
+                                    <span className="text-[#202a36] text-[25px]">Course</span>
+                                    <span className="text-[#fa8128] text-3xl -mb-1">X</span>
+                                </p>
+                            </Typography>
+                        </Link>
                     </div>
                     <div className="p-2">
                         <Input
