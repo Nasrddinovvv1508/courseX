@@ -11,7 +11,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import MainLayout from './layout/MainLayout'
 
 // pages
-import { Home, About, CourseAdd, AllCourses, SingleCourse } from './pages'
+import { Home, About, CourseAdd, AllCourses, SingleCourse, CreateCourse, Competition } from './pages'
 
 function App() {
   let routes = createBrowserRouter([
@@ -40,6 +40,14 @@ function App() {
         {
           path: `/single-course`,
           element: <SingleCourse />,
+        },
+        {
+          path: `/create-course`,
+          element: <CreateCourse />
+        },
+        {
+          path: `/competition`,
+          element: <Competition />
         },
       ]
     }

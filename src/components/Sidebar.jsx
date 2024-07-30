@@ -34,6 +34,10 @@ import {
 import OpenSidebar from "./OpenSidebar";
 import { Link } from "react-router-dom";
 
+import { MdCreateNewFolder } from "react-icons/md";
+import { FaCommentDots } from "react-icons/fa";
+
+
 export default function SidebarWithBurgerMenu() {
     const [open, setOpen] = React.useState(0);
     const [openAlert, setOpenAlert] = React.useState(true);
@@ -78,12 +82,6 @@ export default function SidebarWithBurgerMenu() {
                                 </p>
                             </Typography>
                         </Link>
-                    </div>
-                    <div className="p-2">
-                        <Input
-                            icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-                            label="Search"
-                        />
                     </div>
                     <List>
                         <Accordion
@@ -148,36 +146,41 @@ export default function SidebarWithBurgerMenu() {
                                     className="border-b-0 p-3"
                                 >
                                     <ListItemPrefix>
-                                        <ShoppingBagIcon className="h-5 w-5" />
+                                        <MdCreateNewFolder className="h-5 w-5" />
                                     </ListItemPrefix>
                                     <Typography color="blue-gray" className="mr-auto font-normal">
-                                        E-Commerce
+                                        Create
                                     </Typography>
                                 </AccordionHeader>
                             </ListItem>
                             <AccordionBody className="py-1">
                                 <List className="p-0">
-                                    <ListItem>
-                                        <ListItemPrefix>
-                                            <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                                        </ListItemPrefix>
-                                        Orders
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemPrefix>
-                                            <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                                        </ListItemPrefix>
-                                        Products
-                                    </ListItem>
+                                    <Link to={`/create-course`} className="">
+                                        <ListItem className="flex items-center">
+                                            <ListItemPrefix>
+                                                <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                                            </ListItemPrefix>
+                                            New Course
+                                        </ListItem>
+                                    </Link>
+
+                                    <Link to={`/competition`} className="">
+                                        <ListItem className="flex items-center">
+                                            <ListItemPrefix>
+                                                <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                                            </ListItemPrefix>
+                                            Competition
+                                        </ListItem>
+                                    </Link>
                                 </List>
                             </AccordionBody>
                         </Accordion>
                         <hr className="my-2 border-blue-gray-50" />
                         <ListItem>
                             <ListItemPrefix>
-                                <InboxIcon className="h-5 w-5" />
+                                <FaCommentDots className="h-5 w-5" />
                             </ListItemPrefix>
-                            Inbox
+                            New Comments
                             <ListItemSuffix>
                                 <Chip
                                     value="14"
@@ -200,7 +203,7 @@ export default function SidebarWithBurgerMenu() {
                             </ListItemPrefix>
                             Settings
                         </ListItem>
-                        <ListItem>
+                        <ListItem className="text-red-600 hover:text-red-600 active:text-red-600">
                             <ListItemPrefix>
                                 <PowerIcon className="h-5 w-5" />
                             </ListItemPrefix>
