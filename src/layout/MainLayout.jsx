@@ -2,7 +2,7 @@
 import { Outlet } from 'react-router-dom'
 
 // components
-import { MegaMenuDefault, Sidebar } from '../components'
+import { Footer, MegaMenuDefault, Sidebar } from '../components'
 
 function MainLayout() {
     return (
@@ -16,6 +16,7 @@ function MainLayout() {
             <main>
                 <Outlet />
             </main>
+            <Footer />
         </>
     )
 }

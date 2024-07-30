@@ -9,6 +9,12 @@ body {
     font-family: 'Nunito Sans', sans-serif;
 }
 
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .custom-font {
     font-family: 'Nunito Sans', sans-serif;
 }

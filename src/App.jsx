@@ -11,7 +11,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import MainLayout from './layout/MainLayout'
 
 // pages
-import { Home, About, CourseAdd, AllCourses } from './pages'
+import { Home, About, CourseAdd, AllCourses, SingleCourse } from './pages'
 
 function App() {
   let routes = createBrowserRouter([
@@ -36,6 +36,10 @@ function App() {
         {
           path: `/all-course`,
           element: <AllCourses />
+        },
+        {
+          path: `/single-course`,
+          element: <SingleCourse />,
         },
       ]
     }
