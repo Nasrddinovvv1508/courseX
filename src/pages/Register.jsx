@@ -63,7 +63,7 @@ function Register() {
     return (
         <div className="grid min-h-screen place-items-center bg-[#17222b]">
             <div className="main-container h-[352px] rounded-3xl bg-[#34404a]">
-                <Form method="post" className="absolute z-10 top-[50%] left-[50%] bg-[#e3e7f7] translate-x-[-50%] translate-y-[-50%] p-[30px] w-[430px] h-[520px] rounded-3xl flex flex-col gap-5 items-center">
+                <Form method="post" className="absolute z-10 top-[50%] left-[65%] bg-[#e3e7f7] translate-x-[-50%] translate-y-[-50%] p-[30px] w-[430px] h-[520px] rounded-3xl flex flex-col gap-5 items-center">
                     <h1 className="text-2xl font-semibold">Register</h1>
                     <FormInput
                         type="text"
