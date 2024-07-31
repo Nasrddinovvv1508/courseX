@@ -59,7 +59,7 @@ function App() {
           element: <AllCourses />
         },
         {
-          path: `/single-course`,
+          path: `/single-course/:id`,
           element: <SingleCourse />,
         },
         {

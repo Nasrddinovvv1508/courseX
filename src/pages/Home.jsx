@@ -75,13 +75,13 @@ function Home() {
         </div>
       </section>
 
-      <section>
+      {/* <section>
         <div>
           <h1 className='text-center text-5xl font-bold mb-[30px]'>Our Featured Courses</h1>
         </div>
 
         <div className='main-container'>
-          <CourseHeader />
+          <CourseHeader />z
         </div>
 
         <div className='w-full flex flex-col justify-center items-center'>
@@ -89,7 +89,7 @@ function Home() {
             <Button color="red">View All</Button>
           </Link>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
