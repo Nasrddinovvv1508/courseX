@@ -12,6 +12,7 @@ module.exports = withMT({
     extend: {
       backgroundImage: {
         'hero-pattern': "url('/public/assets/applications.webp')",
+        'login': "url('/public/assets/login-bg.png')",
       },
     },
   },
