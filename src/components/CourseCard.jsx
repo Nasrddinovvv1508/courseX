@@ -20,7 +20,7 @@ export default function CardDefault({ course }) {
                         alt="card-image"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                        <p className="text-white text-xl font-semibold transform translate-y-1/2">
+                        <p className="text-white text-3xl font-semibold transform translate-y-1/2">
                             ${course.price}
                         </p>
                     </div>

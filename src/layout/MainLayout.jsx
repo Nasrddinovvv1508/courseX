@@ -10,13 +10,10 @@ function MainLayout() {
             <MegaMenuDefault />
             <div className='px-16 py-4 border-2 flex items-center justify-between '>
                 <Sidebar />
-
-                Mood
             </div>
             <main className='mb-[100px]'>
                 <Outlet />
             </main>
-
             <Footer />
         </>
     )

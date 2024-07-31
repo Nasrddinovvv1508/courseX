@@ -6,7 +6,7 @@ function OpenSidebar({ openDrawer, isDrawerOpen }) {
     return (
         <IconButton variant="text" size="lg" onClick={openDrawer}>
             {isDrawerOpen ? (
-                <XMarkIcon className="h-8 w-8 stroke-2" />
+                <XMarkIcon className="text-base h-8 w-8 stroke-2" />
             ) : (
                 <Bars3Icon className="h-8 w-8 stroke-2" />
             )}

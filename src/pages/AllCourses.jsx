@@ -7,8 +7,6 @@ function AllCourses() {
   let { user } = useSelector((state) => state.user)
   let { data: courses } = useCollection({ collectionName: "courses", condition: ["uid", "==", user.uid], order: [`createdAt`] })
 
-  console.log(courses);
-
   return (
     <div>
       <section className='main-container flex flex-wrap gap-[24px] my-[70px]'>
@@ -20,18 +18,6 @@ function AllCourses() {
           :
           <h1 className="no-course">No Courses Yet...</h1>
         }
-
-        {/* <Link to={`/single-course`}>
-          <CourseCard />
-        </Link>
-
-        <Link to={`/single-course`}>
-          <CourseCard />
-        </Link>
-
-        <Link to={`/single-course`}>
-          <CourseCard />
-        </Link> */}
       </section>
     </div>
   )

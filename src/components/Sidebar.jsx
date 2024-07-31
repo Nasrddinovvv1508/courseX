@@ -41,11 +41,13 @@ import { signOut } from "firebase/auth";
 import toast from "react-hot-toast";
 
 let logout = async () => {
-    signOut(auth).then(() => {
-        toast.success(`See you later!`);
-    }).catch((error) => {
-        toast.error(error.message);
-    });
+    if (confirm(`Are you sure you want to log out?`)) {
+        signOut(auth).then(() => {
+            toast.success(`See you later!`);
+        }).catch((error) => {
+            toast.error(error.message);
+        });
+    }
 }
 
 

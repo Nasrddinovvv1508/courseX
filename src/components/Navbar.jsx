@@ -76,7 +76,7 @@ function NavbarSimple() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="sticky bg-base-100 top-0 z-50">
       <Navbar className="mx-auto max-w-full px-10 py-3 custom-font">
 
         <div className="flex items-center justify-between ">

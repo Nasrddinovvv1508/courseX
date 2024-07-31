@@ -25,6 +25,16 @@ function CreateCourse() {
     const userData = useActionData();
     const { user } = useSelector((state) => state.user);
 
+    let [errors, setErrors] = useState({
+        courseName: "",
+        numberOfModules: "",
+        price: "",
+        shortDescription: "",
+        category: "",
+        image: "",
+        mentors: "",
+    });
+
     useEffect(() => {
         if (userData) {
             if (userData.courseName.trim() && userData.numberOfModules.trim() && userData.price.trim() && userData.shortDescription.trim() && userData.category.trim() && userData.image.trim() && userData.mentors.trim()) {
@@ -39,6 +49,36 @@ function CreateCourse() {
             } else {
                 toast.error("Fields are required")
             }
+
+            if (!userData.courseName.trim()) {
+                setErrors(prev => ({ ...prev, courseName: "error" }));
+            }
+
+            if (!userData.numberOfModules.trim()) {
+                setErrors(prev => ({ ...prev, numberOfModules: "error" }));
+            }
+
+            if (!userData.price.trim()) {
+                setErrors(prev => ({ ...prev, price: "error" }));
+            }
+
+            if (!userData.shortDescription.trim()) {
+                setErrors(prev => ({ ...prev, shortDescription: "error" }));
+            }
+
+            if (!userData.category.trim()) {
+                setErrors(prev => ({ ...prev, category: "error" }));
+            }
+
+            if (!userData.image.trim()) {
+                setErrors(prev => ({ ...prev, image: "error" }));
+            }
+
+            if (!userData.mentors.trim()) {
+                setErrors(prev => ({ ...prev, mentors: "error" }));
+            }
+
+
         }
     }, [userData, user]);
 
@@ -62,6 +102,7 @@ function CreateCourse() {
                             type={`text`}
                             label={`Course Name`}
                             name={`courseName`}
+                            status={errors.courseName}
                         />
                         <div className='grid grid-cols-2 gap-3'>
                             <FormInput
@@ -69,6 +110,7 @@ function CreateCourse() {
                                 label={`Number of Modules`}
                                 type={`number`}
                                 name={`numberOfModules`}
+                                status={errors.numberOfModules}
                             />
 
                             <FormInput
@@ -76,24 +118,25 @@ function CreateCourse() {
                                 label={`Price`}
                                 type={`number`}
                                 name={`price`}
+                                status={errors.price}
                             />
                         </div>
 
                         <div className="w-full">
                             <FormInput
-                                label={`Category`} name={`category`} />
+                                label={`Category`} name={`category`} status={errors.category} />
                         </div>
 
                         <div className="w-full">
-                            <FormInput label={`Mentors`} name={`mentors`} />
+                            <FormInput label={`Mentors`} name={`mentors`} status={errors.mentors} />
                         </div>
 
                         <TextareaComponent
                             name={`shortDescription`}
-                            label={`Short Description`} />
+                            label={`Short Description`} status={errors.shortDescription} />
 
                         <div className='w-full'>
-                            <FormInput type={`url`} label={`Image`} name={`image`} />
+                            <FormInput status={errors.image} className='no-spinner' type={`url`} label={`Image`} name={`image`} />
                         </div>
 
                         <div className="grid grid-cols-2 gap-5">
