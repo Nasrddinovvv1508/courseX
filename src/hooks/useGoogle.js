@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig"
 import { login } from "../app/userSlice";
+import toast from "react-hot-toast";
 
 export function useGoogle() {
     let signInWithGoogle = async () => {
@@ -13,7 +14,7 @@ export function useGoogle() {
             console.log(user);
         } catch (error) {
             const errorMessage = error.message;
-            // alert(`Error`)
+            toast.error(errorMessage);
         }
     }
 
