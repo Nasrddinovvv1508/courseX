@@ -8,7 +8,7 @@ function Home() {
   return (
     <div>
       <section>
-        <div className='grid grid-cols-3 items-center px-16 gap-5'>
+        <div className='main-container grid grid-cols-2 items-center px-16 gap-5'>
           <div className='flex flex-col gap-5'>
             <h1 className='text-[30px] font-bold leading-[30px]'>
               Unlock Your Potential: Enroll in Our Online Learning Programs
