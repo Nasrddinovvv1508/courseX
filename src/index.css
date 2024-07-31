@@ -61,3 +61,15 @@ header .active {
 .no-spinner {
     -moz-appearance: textfield;
 }
+
+.no-course {
+    font-size: 5rem;
+    font-weight: bold;
+    opacity: 60%;
+    color: #ccc;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}

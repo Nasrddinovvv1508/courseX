@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormInput, TextareaComponent, SelectComponent, FileUpload } from '../components';
-import { Form, useActionData } from 'react-router-dom';
-import { Button, Option, Select } from '@material-tailwind/react';
+import { Form, Navigate, useActionData } from 'react-router-dom';
+import { Button } from '@material-tailwind/react';
+import { useSelector } from 'react-redux';
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from '../firebase/firebaseConfig';
+import toast from 'react-hot-toast';
 
 export let action = async ({ request }) => {
     let formData = await request.formData();
@@ -11,16 +15,36 @@ export let action = async ({ request }) => {
     let shortDescription = formData.get("shortDescription");
     let category = formData.get("category");
     let image = formData.get("image");
-    let mentors = formData.get("mentors"); // Bu yerda mentors qiymatini olish
+    let mentors = formData.get("mentors");
 
     return { courseName, image, category, numberOfModules, price, shortDescription, mentors };
 }
 
 function CreateCourse() {
+    const [redirect, setRedirect] = useState(false);
+    const userData = useActionData();
+    const { user } = useSelector((state) => state.user);
 
-    let userData = useActionData();
+    useEffect(() => {
+        if (userData) {
+            if (userData.courseName.trim() && userData.numberOfModules.trim() && userData.price.trim() && userData.shortDescription.trim() && userData.category.trim() && userData.image.trim() && userData.mentors.trim()) {
+                let newDoc = { ...userData, uid: user.uid, createdAt: serverTimestamp(), isCompetition: false }
+                addDoc(collection(db, "courses"), newDoc).then(() => {
+                    toast.success("Course added successfully");
+                    setRedirect(true);
+                }).catch((error) => {
+                    toast.error("Error adding course");
+                    console.error(error);
+                });
+            } else {
+                toast.error("Fields are required")
+            }
+        }
+    }, [userData, user]);
 
-    console.log(userData); // Konsolda mentors qiymatini ko'rish mumkin
+    if (redirect) {
+        return <Navigate to="/all-course" />;
+    }
 
     return (
         <div>
@@ -74,7 +98,7 @@ function CreateCourse() {
 
                         <div className="grid grid-cols-2 gap-5">
                             <Button type='submit' color='blue'>Save</Button>
-                            <Button type='button' color='amber'>Reset</Button>
+                            <Button type='reset' color='amber'>Reset</Button> {/* Reset tugmasi */}
                         </div>
                     </Form>
 

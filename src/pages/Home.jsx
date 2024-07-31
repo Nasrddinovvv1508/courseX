@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { CourseHeader, EmailComponent, RowCourseCard } from '../components'
 
 function Home() {
+
   return (
     <div>
       <section>
