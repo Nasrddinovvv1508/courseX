@@ -36,6 +36,17 @@ import { Link } from "react-router-dom";
 
 import { MdCreateNewFolder } from "react-icons/md";
 import { FaCommentDots } from "react-icons/fa";
+import { auth } from "../firebase/firebaseConfig";
+import { signOut } from "firebase/auth";
+import toast from "react-hot-toast";
+
+let logout = async () => {
+    signOut(auth).then(() => {
+        toast.success(`See you later!`);
+    }).catch((error) => {
+        toast.error(error.message);
+    });
+}
 
 
 export default function SidebarWithBurgerMenu() {
@@ -203,7 +214,9 @@ export default function SidebarWithBurgerMenu() {
                             </ListItemPrefix>
                             Settings
                         </ListItem>
-                        <ListItem className="text-red-600 hover:text-red-600 active:text-red-600">
+                        <ListItem
+                            onClick={() => logout()}
+                            className="text-red-600 hover:text-red-600 active:text-red-600">
                             <ListItemPrefix>
                                 <PowerIcon className="h-5 w-5" />
                             </ListItemPrefix>

@@ -2,23 +2,44 @@
 import { Button } from '@material-tailwind/react'
 
 // react
-import React from 'react'
+import React, { useEffect } from 'react'
 
 // react-router-dom
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 // layout
 import MainLayout from './layout/MainLayout'
 
 // pages
-import { Home, About, CourseAdd, AllCourses, SingleCourse, CreateCourse, Competition } from './pages'
+import { Home, About, CourseAdd, AllCourses, SingleCourse, CreateCourse, Competition, Login, Register } from './pages'
+
+// actions
+import { action as LoginAction } from './pages/Login'
+import { action as RegisterAction } from './pages/Register'
+import { action as CreateAction } from './pages/CreateCourse'
+
+// components
+import ProtectedRoutes from './components/ProtectedRoutes'
+
+// redux
+import { useDispatch, useSelector } from 'react-redux'
+import { isAuthChange, login } from './app/userSlice'
+
+// firebase
+import { auth } from './firebase/firebaseConfig'
+import { onAuthStateChanged } from 'firebase/auth'
 
 function App() {
+  let { user, isAuthReady } = useSelector((state) => state.user)
+  let dispatch = useDispatch();
+
   let routes = createBrowserRouter([
     {
       path: '/',
       element: (
-        <MainLayout />
+        <ProtectedRoutes user={user}>
+          <MainLayout />
+        </ProtectedRoutes>
       ),
       children: [
         {
@@ -43,17 +64,45 @@ function App() {
         },
         {
           path: `/create-course`,
-          element: <CreateCourse />
+          element: <CreateCourse />,
+          action: CreateAction,
         },
         {
           path: `/competition`,
           element: <Competition />
         },
       ]
-    }
+    },
+    {
+      path: `/login`,
+      element: user ? <Navigate to={`/`} />
+        : (
+          <Login />
+        ),
+      action: LoginAction
+    },
+    {
+      path: `/register`,
+      element: user ? <Navigate to={`/`} />
+        : (
+          <Register />
+        ),
+      action: RegisterAction
+    },
   ])
 
-  return <RouterProvider router={routes} />
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      dispatch(login(user))
+      dispatch(isAuthChange())
+    })
+  }, [])
+
+  return <>
+    {isAuthReady &&
+      < RouterProvider router={routes} />
+    }
+  </>
 }
 
 export default App

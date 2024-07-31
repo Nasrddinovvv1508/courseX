@@ -85,7 +85,7 @@ function Home() {
 
         <div className='w-full flex flex-col justify-center items-center'>
           <Link to="/all-course">
-            <Button color="amber">View All</Button>
+            <Button color="red">View All</Button>
           </Link>
         </div>
       </section>

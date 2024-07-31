@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormInput, TextareaComponent, SelectComponent, FileUpload } from '../components';
-import { Form } from 'react-router-dom';
+import { Form, useActionData } from 'react-router-dom';
+import { Button, Option, Select } from '@material-tailwind/react';
+
+export let action = async ({ request }) => {
+    let formData = await request.formData();
+    let courseName = formData.get("courseName");
+    let numberOfModules = formData.get("numberOfModules");
+    let price = formData.get("price");
+    let shortDescription = formData.get("shortDescription");
+    let category = formData.get("category");
+    let image = formData.get("image");
+    let mentors = formData.get("mentors"); // Bu yerda mentors qiymatini olish
+
+    return { courseName, image, category, numberOfModules, price, shortDescription, mentors };
+}
 
 function CreateCourse() {
+
+    let userData = useActionData();
+
+    console.log(userData); // Konsolda mentors qiymatini ko'rish mumkin
+
     return (
         <div>
             <div className='main-container mt-[50px]'>
-                <div className='w-full grid grid-cols-2 gap-[30px]'>
+                <div className='w-full grid grid-cols-2 items-center gap-[30px]'>
                     <Form
+                        method='post'
                         className='rounded-xl p-[30px] border-1 flex flex-col gap-7'
                         style={{
                             boxShadow: `0px 16px 30px -10px #4660BB33`
@@ -17,27 +37,50 @@ function CreateCourse() {
                         <FormInput
                             type={`text`}
                             label={`Course Name`}
+                            name={`courseName`}
                         />
                         <div className='grid grid-cols-2 gap-3'>
                             <FormInput
                                 className='no-spinner'
                                 label={`Number of Modules`}
-                                type={`number`} />
+                                type={`number`}
+                                name={`numberOfModules`}
+                            />
 
                             <FormInput
                                 className='no-spinner'
                                 label={`Price`}
-                                type={`number`} />
+                                type={`number`}
+                                name={`price`}
+                            />
                         </div>
 
-                        <SelectComponent label={"Select Mentors"} />
+                        <div className="w-full">
+                            <FormInput
+                                label={`Category`} name={`category`} />
+                        </div>
 
-                        <TextareaComponent label={`Short Description`} />
+                        <div className="w-full">
+                            <FormInput label={`Mentors`} name={`mentors`} />
+                        </div>
+
+                        <TextareaComponent
+                            name={`shortDescription`}
+                            label={`Short Description`} />
+
+                        <div className='w-full'>
+                            <FormInput type={`url`} label={`Image`} name={`image`} />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-5">
+                            <Button type='submit' color='blue'>Save</Button>
+                            <Button type='button' color='amber'>Reset</Button>
+                        </div>
                     </Form>
 
-                    <div className='flex flex-col justify-center items-center'>
+                    {/* <div className='flex flex-col justify-center items-center'>
                         <FileUpload />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 // react
-import React from "react";
+import React, { memo } from "react";
 
 // material-tailwind
 import {
@@ -59,7 +59,7 @@ function NavList() {
   );
 }
 
-export default function NavbarSimple() {
+function NavbarSimple() {
   let { user } = useSelector((state) => state.user)
 
   const [openNav, setOpenNav] = React.useState(false);
@@ -118,5 +118,7 @@ export default function NavbarSimple() {
     </header>
   );
 }
+
+export default memo(NavbarSimple);
 
 //text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent

@@ -1,14 +1,22 @@
 import { Input } from "@material-tailwind/react";
 
-export default function InputDefault({ label, type, name, className }) {
+export default function InputDefault({ label, type, name, className, status }) {
     return (
         <div className="w-full">
-            <Input
-                className={className && className}
-                type={type}
-                label={label}
-                name={name}
-            />
+            {status ? (
+                <Input
+                    className={className}
+                    type={type}
+                    label={label}
+                    name={name}
+                    error
+                />
+            ) : (
+                <Input
+                    className={className}
+                    type={type}
+                    label={label}
+                    name={name} />)}
         </div>
     );
 }
